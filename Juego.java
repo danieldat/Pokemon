@@ -5,6 +5,7 @@
  */
 package Pokemons;
 
+import java.util.*;
 import java.util.Scanner;
 
 /**
@@ -15,97 +16,37 @@ public class Juego {
 
     public static void main(String[] Args) {
 
-        Scanner sc = new Scanner(System.in);
+         Scanner sc = new Scanner(System.in);
         Pokemon[] p1 = new Pokemon[4];
-
-        System.out.println("Nombre del primer jugador ");
-        String n = sc.next();
-        p1[0] = new Entrenador(n);
-
-        for (int i = 1; i < 4; i++) {
-            int op;
-            System.out.println("Seleccione tipo vez:" + i);
-            System.out.println("1.Fuego");
-            System.out.println("2.Agua");
-            System.out.println("3.Planta");
-            try {
-                op = sc.nextInt();
-            } catch (Exception e) {
-                System.out.println("Solo numeros enteros");
-                op = 3;
-
-            }
-
-            if (3 != op && op != 1 && op != 2) {
-                i--;
-                System.out.println("Ese numero no es valido");
-            } else {
-
-                switch (op) {
-                    case 1:
-                        p1[i] = new Fuego();
-                        break;
-                    case 2:
-                        p1[i] = new Agua();
-                        break;
-                    case 3:
-                        p1[i] = new Planta();
-                        break;
-
-                }
-            }
-        }
-
         Pokemon[] p2 = new Pokemon[4];
-
-        System.out.println("Nombre del segundo jugador ");
-        String m = sc.next();
-        p2[0] = new Entrenador(m);
-
-        for (int i = 1; i < 4; i++) {
-            int op;
-            System.out.println("Seleccione tipo vez:" + i);
-            System.out.println("1.Fuego");
-            System.out.println("2.Agua");
-            System.out.println("3.Planta");
-            try {
-                op = sc.nextInt();
-            } catch (Exception e) {
-                System.out.println("Solo numeros enteros");
-                op = 3;
-
-            }
-
-            if (3 != op && op != 1 && op != 2) {
-                i--;
-                System.out.println("Ese numero no es valido");
-            } else {
-
-                switch (op) {
-                    case 1:
-                        p2[i] = new Fuego();
-                        break;
-                    case 2:
-                        p2[i] = new Agua();
-                        break;
-                    case 3:
-                        p2[i] = new Planta();
-                        break;
-
-                }
-            }
+        p1[0]=new Entrenador();
+        p2[0]=new Entrenador();
+        
+        p1[0].select(p1);
+        p2[0].select(p2);
+        ArrayList <Pokemon> poke = new ArrayList<Pokemon>();
+        
+        poke.add(p1[1]);
+        poke.add(p1[2]);
+        poke.add(p1[3]);
+        
+        ArrayList <Pokemon> poke2=new ArrayList<Pokemon>();
+             
+        poke2.add(p2[1]);
+        poke2.add(p2[2]);
+        poke2.add(p2[3]);
+        
+        p1[0].present(p1, p2);
+        
+        /*for(Pokemon pokemon:poke){
+        
+            pokemon.ficha();
+        
         }
-        p1[0].present(p1,p2);
-      
-
+        for(Pokemon pokemon:poke2){
         
-        
-        
-        
-        
-        
-        
-        
+        pokemon.ficha();
+        }*/
         
         
     }

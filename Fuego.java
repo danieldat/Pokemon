@@ -5,6 +5,8 @@
  */
 package Pokemons;
 
+import java.util.Objects;
+
 /**
  *
  * @author alumnot
@@ -26,11 +28,36 @@ public class Fuego extends Pokemon implements Ataques {
        case 8:salvaje="Charmander";poder=150;break;
        case 9:salvaje="Vulpix    ";poder=10;break;
        case 10:salvaje="Ponita    ";poder=10;break;
-       case 5:salvaje="Moltres   ";poder=400;break;
+       case 5:salvaje="Moltres   ";poder=200;break;
        case 0:salvaje="Magmar    ";poder=120;break;
    }
    return salvaje;
  }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.salvaje);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Fuego other = (Fuego) obj;
+        if (!Objects.equals(this.salvaje, other.salvaje)) {
+            return false;
+        }
+        return true;
+    }
  
  
  
@@ -52,10 +79,7 @@ public class Fuego extends Pokemon implements Ataques {
   return (int)(Math.random()*100);
   }
  
-  @Override
-  public void recibe(){
   
-  }
   
   public double experiencia(){
   double exp=(Math.random()*100);    
